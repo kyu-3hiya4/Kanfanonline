@@ -3,6 +3,8 @@
     <p>ユーザーネーム：<%= post.user.name %></p>
     <p>タイトル：<%= post.title %></p>
     <p>本文：<%= post.body %></p>
-    
-  </div>
+  <li>
+    <%= link_to '投稿詳細', post_path(post.id) %>
+  </li>
+ </div>
 <% end %>

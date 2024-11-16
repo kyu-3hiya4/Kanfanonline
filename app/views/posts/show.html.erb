@@ -1,2 +1,6 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div>
+  <p>ユーザーネーム：<%= @post.user.name %></p>
+  <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  <p>タイトル：<%= @post.title %></p>
+  <p>本文：<%= @post.body %></p>
+</div>
