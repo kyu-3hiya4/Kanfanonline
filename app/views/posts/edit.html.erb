@@ -1,0 +1,13 @@
+<h1>投稿編集</h1>
+
+<%= form_with model: @post, url: post_path(@post), method: :patch do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+  
+  <h4>感想</h4>
+  <%= f.text_area :body %>
+  
+  <%= f.submit '更新' %>
+  
+<% end %>
