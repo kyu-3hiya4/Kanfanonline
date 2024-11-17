@@ -1,4 +1,12 @@
 <h1>投稿編集</h1>
+<% if @post.errors.any? %>
+  <%= @post.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with model: @post, url: post_path(@post), method: :patch do |f| %>
 
