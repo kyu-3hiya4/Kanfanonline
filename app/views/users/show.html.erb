@@ -3,6 +3,7 @@
  
   <% if @user == current_user %>
   <p><%= link_to 'マイページ編集', edit_user_path(@user) %>
+  <p><%= link_to '退会', user_path(@user), class: "destroy-user", method: :delete, "data_confirm" => "本当に退会しますか？" %></P>
   <% end %> 
 
 </div>
