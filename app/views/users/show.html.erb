@@ -1,5 +1,10 @@
 <div>
   <h3><%= @user.name %></h3>
+ 
+  <% if @user == current_user %>
+  <p><%= link_to 'マイページ編集', edit_user_path(@user) %>
+  <% end %> 
+
 </div>
 
 <% @posts.each do |post| %>
