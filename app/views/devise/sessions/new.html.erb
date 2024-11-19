@@ -1,6 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+
 <h2>ログイン</h2>
 
   <%= form_with model: @user, url: user_session_path do |f| %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -19,10 +24,16 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "ログインする" %>
+    <%= f.submit "ログインする", class: "btn btn-Warning" %>
   </div>
 <% end %>
-<li>
+
+ <li>
  会員登録がお済みでない方は、
  <%= link_to "こちら", new_user_registration_path %>
  から新規登録をお願いします。
+ </li>
+
+ </div>
+</div>
+</div>

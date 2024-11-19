@@ -1,4 +1,5 @@
-<h1>感想投稿フォーム</h1>
+<h1 class="mt-2">感想投稿フォーム</h1>
+
 <% if @post.errors.any? %>
   <%= @post.errors.count %>件のエラーが発生しました
   <ul>
@@ -10,9 +11,15 @@
 
 <%= form_with model: @post do |f| %>
   
-  <h4>タイトル</h4>
+  <div class="form-group">
+  <label for="title">タイトル</label><br>
   <%= f.text_field :title %>
-  <h4>感想</h4>
-  <%= f.text_area :body %>
-  <%= f.submit '公開する' %>
+  </div>
+
+  <div class="form-group">
+  <label for="body">感想</label><br>
+  <%= f.text_area :body, class: 'form-control', size: "30×20" %>
+  <%= f.submit '公開する', class: "btn btn-md btn-Warning" %>
+  </div>
+
 <% end %>

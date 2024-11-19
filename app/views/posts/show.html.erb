@@ -1,11 +1,28 @@
-<div>
-  <p>ユーザーネーム：<%= @post.user.name %></p>
-  <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <p>タイトル：<%= @post.title %></p>
-  <p>本文：<%= @post.body %></p>
+<div class="container">
+ <div class="row">
+  <div class="col-md-3">
+
+  <div class ="col-md-8 offset-md-1">
+  <h2>投稿詳細</h2>
+
+  <table class="table">
+  <tbody>
+  <tr>
+  <td>ユーザーネーム：<%= @post.user.name %></td>
+
+  <td>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></td>
+  <td>タイトル：<%= @post.title %></td>
+  <td>本文：<%= @post.body %></td>
 
   <% if @post.user == current_user %>
-    <%= link_to "編集", edit_post_path(@post.id) %>
-    <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<% end %>
+    <td><%= link_to "編集", edit_post_path(@post.id), class: "btn btn-sm btn-Warning" %></td>
+    <tr>
+    <td><%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %></td>
+  <% end %>
+  <tr>
+ </tbody>
+ </table>
+ 
+</div>
+</div>
 </div>

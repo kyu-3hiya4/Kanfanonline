@@ -1,3 +1,7 @@
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 sm-0 mx-auto">
+
 <h1>投稿編集</h1>
 <% if @post.errors.any? %>
   <%= @post.errors.count %>件のエラーが発生しました
@@ -10,12 +14,22 @@
 
 <%= form_with model: @post, url: post_path(@post), method: :patch do |f| %>
 
-  <h4>タイトル</h4>
+ <div class="form-group">
+  <label for="title">タイトル</label>
+  <br>
   <%= f.text_field :title %>
+  </div>
   
-  <h4>感想</h4>
+  <div class="form-group">
+  <label for="body">感想</label>
   <%= f.text_area :body %>
+  </div>
   
-  <%= f.submit '更新' %>
+  <div class="form-group">
+  <%= f.submit '更新', class: "btn btn-md btn-Warning" %>
+  </div>
   
-<% end %>
+  <% end %>
+  </div>
+ </div>
+ </div>

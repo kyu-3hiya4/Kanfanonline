@@ -1,11 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
+
 <h2>プロフィール編集</h2>
 <%= form_with model: @user do |f| %>
 
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"ユーザーネーム"%>
+ <div class="form-group">
+  <label for="inputName">Name</label><br>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"ユーザーネーム"%><br>
+ </div>
 
-  <label for="inputEmail">Email</label>
-  <%= f.email_field :email, placeholder: "メールアドレス" %>  
-  
-  <%= f.submit "変更を保存" %>
+ <div class="form-group">
+  <label for="inputEmail">Email</label><br>
+  <%= f.email_field :email, placeholder: "メールアドレス" %>  <br>
+ </div>
+
+ <div class="form-group">
+  <%= f.submit "変更を保存", class: "btn btn-md btn-Warning" %>
+ </div>
 <% end %>
+ </div>
+ </div>
+ </div>
