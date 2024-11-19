@@ -1,8 +1,8 @@
 <div class="container">
  <div class="row">
-  <div class="col-md-3">
+ 
 
-  <div class="col-md-8 offset-md-1">
+  <div class="col-lg-10 col-md-10 mx-2 mx-sm-auto">
   <h2>マイページ</h2>
 
   <div>
@@ -17,6 +17,7 @@
   <table class=table>
   <thead>
   <tr>
+  <th>ユーザーネーム</td>
   <th>タイトル</th>
   <th>感想</th>
   <th colspan="3"></th>
@@ -26,9 +27,9 @@
   <tbody>
   <% @posts.each do |post| %>
   <tr>
-  <td>ユーザーネーム：<%= post.user.name %></td>
-  <td>タイトル：<%= post.title %></td>
-  <td>感想：<%= post.body %></td>
+  <td><%= post.user.name %></td>
+  <td><%= post.title %></td>
+  <td><%= post.body %></td>
   <td>
   <%= link_to '感想詳細', post_path(post.id), class: "btn btn-md btn-secondary" %>
   </td>
