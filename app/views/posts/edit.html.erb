@@ -26,10 +26,14 @@
   <%= f.text_area :body %>
   </div>
   
-  <div class="form-group">
-  <%= f.submit '更新', class: "btn btn-md btn-warning" %>
-  </div>
+   <% if @post.user == current_user %>
+   <div class="form-group">
+   <%= f.submit '更新', class: "btn btn-md btn-warning" %>
   
+   <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-md btn-danger" %>
+   </div>
+  
+  <% end %>
   <% end %>
   </div>
  </div>
