@@ -5,10 +5,12 @@ class SearchesController < ApplicationController
 		@model = params[:model]
 		@content = params[:content]
 		@method = params[:method]
+		@users = []
+		@posts = []
 		if @model == 'user'
-			@records = User.search_for(@content, @method)
+			@users = User.search_for(@content, @method)
 		else
-			@records = Post.search_for(@content, @method)
+			@posts = Post.search_for(@content, @method)
 		end
 	end
 end
