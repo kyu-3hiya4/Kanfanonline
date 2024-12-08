@@ -1,0 +1,25 @@
+<h2>検索結果</h2>
+
+<% if @users.empty? && @posts.empty? %>
+  <p>検索結果はありません。</p>
+  <% else %>
+
+<table>
+<tbody>
+  <% @users.each do |user| %> 
+  <tr>
+    <td><%= user.name %></td>
+  </tr>
+  <% end %>
+
+  <% @posts.each do |post| %> 
+  <tr>
+    <td><%= post.title %></td>
+    <td><%= post.body %></td>
+  </tr>
+  <% end %>
+  <% end %>
+  </tbody>
+  </table>
+
+ 
