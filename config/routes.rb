@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :destroy]
   end
   
+  scope module: :public do
   root to: "homes#top"
   devise_for :users
   resources :posts
