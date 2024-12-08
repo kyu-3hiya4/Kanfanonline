@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2024_12_04_133301) do
 
   create_table "admins", force: :cascade do |t|
@@ -23,6 +24,9 @@ ActiveRecord::Schema.define(version: 2024_12_04_133301) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
+=======
+ActiveRecord::Schema.define(version: 2024_12_03_131607) do
+>>>>>>> feature/comment
 
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
