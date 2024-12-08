@@ -17,5 +17,9 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
-  4
+  
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
+  
 end
