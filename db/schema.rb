@@ -25,8 +25,6 @@ ActiveRecord::Schema.define(version: 2024_12_04_133301) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  # ActiveRecord::Schema.define(version: 2024_12_03_131607) do
-
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
     t.integer "user_id"
