@@ -10,8 +10,8 @@
  
   <% unless @user.guest_user? %>
   <% if @user == current_user %>
-  <p><%= link_to 'マイページ編集', edit_user_path(@user) %>
-  <p><%= link_to '退会', user_path(@user), class: "destroy-user", method: :delete, "data_confirm" => "本当に退会しますか？" %></P>
+  <p><%= link_to 'マイページ編集', edit_user_path(@user), class: "btn btn-md btn-warning" %>
+  <p><%= link_to '退会', user_path(@user), class: "destroy-user", method: :delete, "data_confirm" => "本当に退会しますか？", class: "btn btn-md btn-danger" %></P>
   <% end %> 
   <% end %>
   </div>
