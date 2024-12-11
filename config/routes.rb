@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   
   scope module: :public do
     root to: "homes#top"
-    devise_for :users
+    devise_for :users, controllers: {
+      sessions: 'public/sessions'
+    }
     resources :posts do
       resources :comments, only: [:create, :destroy]
     end
