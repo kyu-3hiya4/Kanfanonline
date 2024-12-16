@@ -1,2 +1,12 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<h1>グループ作成フォーム</h1>
+
+<%= form_with model: @group do |f| %>
+
+<label for="name">グループ名</label><br>
+  <%= f.text_field :name %>
+
+<label for="theme">テーマ</label><br>
+  <%= f.text_field :them %>
+  <%= f.submit '作成する', class: "btn btn-md btn-success" %>
+
+<% end %>
