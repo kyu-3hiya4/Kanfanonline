@@ -3,10 +3,11 @@
 <%= form_with model: @group do |f| %>
 
 <label for="name">グループ名</label><br>
-  <%= f.text_field :name %>
+  <%= f.text_field :name %><br>
 
 <label for="theme">テーマ</label><br>
-  <%= f.text_field :them %>
+  <%= f.text_field :them %><br>
+  
   <%= f.submit '作成する', class: "btn btn-md btn-success" %>
 
 <% end %>
