@@ -1,2 +1,16 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<h1>グループ詳細</h1>
+
+<table class="table" cellspacing="1">
+  <tbody>
+  <tr>
+  <td>グループ名：
+      <%= @group.name %>
+  </td>
+  <td>テーマ：
+      <%= @group.theme %>
+  </td>
+  <td>
+    <%= link_to 'グループ編集', edit_group_path(@group.id), class: "btn btn-md btn-warning" %>
+  </td>
+  </tbody>
+ </table>
