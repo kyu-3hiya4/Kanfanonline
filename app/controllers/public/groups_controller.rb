@@ -26,9 +26,12 @@ class Public::GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.find(params[:id])
-    @group.update(group_params)
-    redirect_to group_path(@group.id)
+    @group = Group.find_by(id: params[:id])
+    if @group.update(group_params)
+       redirect_to group_path(@group.id) 
+    else
+      render :edit
+    end
   end
   
   private
