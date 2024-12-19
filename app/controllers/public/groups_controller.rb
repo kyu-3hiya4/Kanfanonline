@@ -38,4 +38,11 @@ class Public::GroupsController < ApplicationController
    def group_params
     params.require(:group).permit(:name, :theme)
    end
+
+   def ensure_correct_user
+    @group = Group.find(params[:id])
+    unless @group.owner_id == current_user.id
+      redirect_to groups_path
+    end
+   end
 end

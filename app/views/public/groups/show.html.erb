@@ -10,7 +10,9 @@
       <%= @group.theme %>
   </td>
   <td>
+   <% if @group.is_owned_by?(current_user) %>
     <%= link_to 'グループ編集', edit_group_path(@group.id), class: "btn btn-md btn-warning" %>
+   <% end %>
   </td>
   </tbody>
  </table>
