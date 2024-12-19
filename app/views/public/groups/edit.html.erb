@@ -1,5 +1,13 @@
 <h1>グループ編集</h1>
 
+<% if @group.errors.any? %>
+  <%= @group.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @group.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+
 <%= form_with model: @group, url: group_path(@group), method: :patch do |f| %>
 
 <div class="form-group">
