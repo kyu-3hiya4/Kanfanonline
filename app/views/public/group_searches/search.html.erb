@@ -1,0 +1,28 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class ="col-lg-20 col-md-10 mx-2 mx-sm-auto">
+
+<h2>検索結果</h2>
+
+<% if @groups.empty? %>
+  <p>検索結果はありません。</p>
+  <% else %>
+
+<table>
+<tbody>
+  <% @groups.each do |group| %> 
+  <tr>
+    <td><%= group.name %></td>
+  </tr>
+  <tr>
+    <td><%= group.theme %></td>
+  </tr>
+  <% end %>
+  <% end %>
+  </tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+ 
