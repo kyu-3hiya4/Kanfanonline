@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :destroy]
     resources :groups, except: [:destroy]
     get '/search', to: 'searches#search'
+    get '/group_search', to: 'group_searches#search'
   end
 
   devise_scope :user do
