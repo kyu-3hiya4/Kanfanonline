@@ -19,7 +19,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update, :destroy]
-    resources :groups, except: [:destroy]
+    resources :groups, except: [:destroy] do
+      resource :group_users, only: [:create, :destroy]
+    end
     get '/search', to: 'searches#search'
     get '/group_search', to: 'group_searches#search'
   end
