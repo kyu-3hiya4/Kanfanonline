@@ -3,21 +3,16 @@ class Public::GroupUsersController < ApplicationController
   
   def create
     @group_user = current_user.group_users.new(group_id: params[:group_id])
-
-    if params[:pending].present?
-      @group_user.status = :pending
-    else
-      @group_user.status = :approval
-    end
-
+    @group_user.status = 0 #pending
+   
     if @group_user.save
-      if @group_user.pending?
-        redirect_to request.referer, notice: "グループへ参加申請しました。"
+      if @group_user.status == 0
+        redirect_to group_group_path(group_id: params[:group_id]), notice: "グループへ参加申請しました。"
       else
-        redirect_to group_group_users_path(group_id: params[:group_id]), notice: "グループへの参加を承認しました。"
+        redirect_to group_path, alert: "グループへの参加申請中に」エラーが発生しました。もう一度お試しください。"
       end
     else
-      redirect_to group_path
+      redirect_to group_path #エラー時のリダイレクト先
     end
   end
   
@@ -51,7 +46,7 @@ class Public::GroupUsersController < ApplicationController
   def destroy
     group_user = current_user.group_users.find_by(group_id: params[:group_id])
     group_user.destroy
-    redirect_to request.referer
+    redirect_to group_path(params[:group_id]), notice: "グループメンバーから削除しました。"
   end
 
   private

@@ -22,7 +22,7 @@
        <%= link_to '承認待ち一覧', group_group_users_path(@group), class: "btn btn-md btn-secondary" %>
 
    <% elsif @group.include_user?(current_user)%>
-       <%= link_to '申請取消', group_group_users_path(@group), name: 'cancel',  method: :delete, class: "btn btn-sm btn-danger" %>
+      
    <% else %>
        <%= link_to '参加申請', group_group_users_path(@group), name: 'pending', method: :post, class: "btn btn-sm btn-success" %>
    <% end %>
