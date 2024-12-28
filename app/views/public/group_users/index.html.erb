@@ -1,2 +1,31 @@
  <h1>承認待ち一覧</h1>
+ <table class ="table">
+
+    <thead>
+    <tr>
+    <th>名前</th>
+    <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @group_users.each do |group_user| %>
+    <tr>
+    <td><%= group_user.user.name %></td>
+
+    <td><%= form_with url: group_group_user_path(group_user.group_id, group_user.id), method: :patch do |f| %>
+      <%= f.submit '承認', name: 'approval', class: "btn btn-sm btn-success" %>
+      <% end %>
+    </td>
+
+    <td><%= form_with url: group_group_user_path(group_user.group_id, group_user.id), method: :patch do |f| %>
+      <%= f.submit '申請取消', name: 'cancel', class: "btn btn-sm btn-danger" %>
+      <% end %>
+    </td>
+        <%#= link_to '承認', group_group_user_path(group_user.group_id, group_user.id), method: :patch, class: "btn btn-sm btn-success" %>
+        <%#= link_to '申請取消', group_group_user_path(group_user.group_id, group_user.id), method: :patch, class: "btn btn-sm btn-danger" %> 
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 

@@ -3,44 +3,35 @@ class Public::GroupUsersController < ApplicationController
   
   def create
     @group_user = current_user.group_users.new(group_id: params[:group_id])
-    @group_user.status = 0 #pending
+    @group_user.status = GroupUser.statuses[:pending]
    
     if @group_user.save
-      if @group_user.status == 0
-        redirect_to group_group_path(group_id: params[:group_id]), notice: "グループへ参加申請しました。"
-      else
-        redirect_to group_path, alert: "グループへの参加申請中に」エラーが発生しました。もう一度お試しください。"
-      end
+        redirect_to group_path(params[:group_id]), notice: "グループへ参加申請しました。"
     else
-      redirect_to group_path #エラー時のリダイレクト先
+        redirect_to group_path(params[:group_id]), notice: "グループへ参加申請できませんでした。" #エラー時のリダイレクト先
     end
   end
   
   def update
-    @group_user = current_user.group_users.find_by(group_id: params[:group_id])
-    @group_user.assign_attributes(group_user_params)
+    @group_user = GroupUser.find(params[:id])
 
-    if params[:pending].present?
-      @group_user.status = :pending
-      notice_message = "グループへ参加申請を行いました。"
-      redirect_path = group_group_users_path(group_id: params[:group_id])
-    elsif params[:cancel].present?
-      @group_user.status = :cancel
-      notice_message = "グループへの参加を拒否しました。"
-      redirect_path = group_path
-    else
-      @group_user.status = :approval
+    if params[:approval].present?
+      @group_user.status = GroupUser.statuses[:approval]
       notice_message = "グループへの参加を承認しました。"
-      redirect_path = group_users_path(group_id: params[:group_id])
+    elsif params[:cancel].present?
+      @group_user.status = GroupUser.statuses[:cancel]
+      notice_message = "グループへの参加を拒否しました。"
     end
 
     if @group_user.save
-      redirect_to redirect_path, notice: notice_message
+      redirect_to group_group_users_path(params[:group_id]), notice: notice_message
+    else
+      redirect_to group_group_users_path(params[:group_id]), alert: "更新に失敗しました。"
     end
    end
 
   def index
-    @group_users = GroupUser.all
+    @group_users = GroupUser.where(group_id: params[:group_id], status: 0)
   end
 
   def destroy
