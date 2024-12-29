@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'dashboards', to: 'dashboards#index'
     resources :users, only: [:index, :show, :destroy] 
     resources :comments, only: [:index, :destroy]
+    resources :groups, only: [:index, :destroy]
   end
   
   scope module: :public do

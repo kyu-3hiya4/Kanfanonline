@@ -4,5 +4,6 @@ class Admin::DashboardsController < ApplicationController
   def index
       @users = User.all
       @comments = Comment.all
+      @groups = Group.all
   end
 end
