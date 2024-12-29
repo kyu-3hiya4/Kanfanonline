@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+   <div class ="col-lg-10 col-md-10 mx-2 mx-sm-auto">
+
+<h1>全グループ一覧</h1>
+
+<table class ="table">
+<thead>
+<tr>
+<th>グループ名</th>
+<th colspan="3"></th>
+</tr>
+</thead>
+
+<tbody>
+  <tr>
+  <% @groups.each do |group| %>
+   <tr>
+   <td><%= group.name %></td>
+   <td><%= link_to 'グループ詳細', admin_group_path(group) %></td>
+  </tr>
+  <% end %>
+  </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  

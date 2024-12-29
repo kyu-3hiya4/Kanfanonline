@@ -1,0 +1,13 @@
+<h2>グループ詳細</h2>
+
+<div>
+<h3><%= @group.name %></h3>
+<p><%= @group.theme %></p>
+
+<h3>メンバー</h3>
+<% @group.users.each do |user| %>
+    <li style="list-style: none;"><%= user.name %></li>
+    <% end %>
+
+<p><%= link_to 'グループ削除', admin_group_path(@group), method: :delete, data: { confirm: '本当に削除しますか？' } %></p>
+</div>
