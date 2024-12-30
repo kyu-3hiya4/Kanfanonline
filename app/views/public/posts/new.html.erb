@@ -24,22 +24,24 @@
   <label for="body">感想</label><br>
   <%= f.text_area :body, class: 'form-control', size: "15×20" %>
 
+  <div class="btn-group" role="group" id="buttonGroup">
     <% if @post.persisted? %>
       <% if @post.draft? %>
-        <%= f.submit '下書き保存', name: 'draft', class: "btn btn-sm btn-secondary" %>
-        <%= f.submit '公開する', name: 'published', class: "btn btn-sm btn-success" %>
+        <%= f.submit '下書き保存', id: 'draftButton', name: 'status', value: 'draft', class: "btn btn-sm btn-secondary" %>
+        <%= f.submit '公開する', id: 'publishButton', name: 'status', value: 'published', class: "btn btn-sm btn-success" %>
       <% elsif @post.unpublished? %>
-        <%= f.submit '非公開にする', name: 'unpublished', class: "btn btn-sm btn-danger" %>
-        <%= f.submit '公開する', name: 'published', class: "btn btn-sm btn-success" %>
+        <%= f.submit '非公開にする', id: 'unpublishButton', name: 'status', value: 'unpublished', class: "btn btn-sm btn-danger" %>
+        <%= f.submit '公開する', id: 'publishButton', name: 'status', value: 'published', class: "btn btn-sm btn-success" %>
       <% else %>
-        <%= f.submit '非公開にする', name: 'unpublished', class: "btn btn-sm btn-danger" %>
-        <%= f.submit '公開する', name: 'published', class: "btn btn-sm btn-success" %>
+        <%= f.submit '非公開にする', id: 'unpublishButton', name: 'status', value: 'unpublished', class: "btn btn-sm btn-danger" %>
+        <%= f.submit '公開する', id: 'publishButton', name: 'status', value: 'published', class: "btn btn-sm btn-success" %>
       <% end %>
     <% else %>
-        <%= f.submit '下書き保存', name: 'draft', class: "btn btn-sm btn-secondary" %>
-        <%= f.submit '公開する', name: 'published', class: "btn btn-sm btn-success" %>
+        <%= f.submit '下書き保存', id: 'draftButton', name: 'draft', class: "btn btn-sm btn-secondary" %>
+        <%= f.submit '公開する', id: 'publishButton', name: 'published', class: "btn btn-sm btn-success" %>
     <% end %>
   <% end %>
+</div>
 </div>
 </div>
 </div>
@@ -65,23 +67,23 @@
 
   <div class="tab-content">
     <div id="published" class="tab-pane fade show active">
-      <% @posts.each do |post| %>
+      <% @published_posts.each do |post| %>
         <li><%= post.title %></li>
-            <%= post.body %><br>
+         <p><%= post.body %></p>
       <% end %>
     </div>
 
     <div id="draft" class="tab-pane fade">
-      <% @posts.each do |post| %>
+      <% @draft_posts.each do |post| %>
         <li><%= post.title %></li>
-            <%= post.body %><br>
+        <p><%= post.body %></p>
       <% end %>
     </div>
 
     <div id="unpublished" class="tab-pane fade">
-      <% @posts.each do |post| %>
+      <% @unpublished_posts.each do |post| %>
         <li><%= post.title %></li>
-            <%= post.body %><br>
+         <p><%= post.body %></p>
       <% end %>
     </div>
 

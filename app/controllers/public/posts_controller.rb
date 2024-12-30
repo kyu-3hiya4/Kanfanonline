@@ -4,7 +4,10 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @posts = Post.all
+    @posts = current_user.posts
+    @published_posts = @posts.where(status: 'published')
+    @draft_posts = @posts.where(status: 'draft')
+    @unpublished_posts = @posts.where(status: 'unpublished')
   end
 
   def create
@@ -14,7 +17,7 @@ class Public::PostsController < ApplicationController
     if params[:draft].present?
       @post.status = :draft
     else
-      @post.status = :published
+      @post.status = :publiched
     end
 
     if @post.save
@@ -39,6 +42,10 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @posts = Post.all
+    @published_posts = @posts.where(status: 'published')
+    @draft_posts = @posts.where(status: 'draft')
+    @unpublished_posts = @posts.where(status: 'unpublished')
   end
 
   def update
