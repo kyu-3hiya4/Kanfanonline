@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
+  enum status: { draft:0, publiched: 1, unpubliched: 2 }
+
   def self.search_for(content, method)
     if method == 'perfect'
       Post.where(title: content)
