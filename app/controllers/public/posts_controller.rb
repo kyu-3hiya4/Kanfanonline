@@ -9,8 +9,19 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+
+    if params[:draft].present?
+      @post.status = :draft
+    else
+      @post.status = :published
+    end
+
     if @post.save
-      redirect_to post_path(@post.id)
+      if @post.draft?
+        redirect_to post_path(@post.id), notice: '下書きが保存されました。'
+      else
+        redirect_to post_path(@post.id), notice: '投稿が公開されました。'
+      end
     else
       render :new
     end
@@ -31,8 +42,27 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
-       redirect_to post_path(@post.id)  
+
+    @post.assign_attributes(post_params)
+
+    if params[:draft].present?
+      @post.status = :draft
+      notice_message = "下書き保存しました。"
+      redirect_path = post_path(@post.id)
+
+    elsif params[:unpublished].present?
+      @post.status = :unpublished
+      notice_message = "非公開にしました。"
+      redirect_path = post_path(@post.id)
+
+    else 
+      @post.status = :published
+      notice_message = "投稿を更新しました。"
+      redirect_path = post_path(@post.id)
+    end
+
+    if @post.save
+       redirect_to post_path(@post.id) , notice: notice_message 
     else
       render :edit
     end
@@ -47,7 +77,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :status)
   end
 
   def is_matching_login_user

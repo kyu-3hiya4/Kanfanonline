@@ -28,9 +28,23 @@
   
    <% if @post.user == current_user %>
    <div class="form-group">
-   <%= f.submit '更新', class: "btn btn-md btn-warning" %>
-  
-   <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-md btn-danger" %>
+    <% if @post.persisted? %>
+      <% if @post.draft? %>
+        <%= f.submit '下書き保存', name: 'draft', class: "btn btn-sm btn-secondary" %>
+        <%= f.submit '公開する', name: 'published', class: "btn btn-sm btn-success" %>
+      <% elsif @post.unpublished? %>
+        <%= f.submit '非公開にする', name: 'unpublished', class: "btn btn-sm btn-danger" %>
+        <%= f.submit '公開する', name: 'published', class: "btn btn-sm btn-success" %>
+      <% else %>
+        <%= f.submit '非公開にする', name: 'unpublished', class: "btn btn-sm btn-danger" %>
+        <%= f.submit '公開する', name: 'published', class: "btn btn-sm btn-success" %>
+      <% end %>
+    <% else %>
+        <%= f.submit '下書き保存', name: 'draft', class: "btn btn-sm btn-secondary" %>
+        <%= f.submit '公開する', name: 'published', class: "btn btn-sm btn-success" %>
+    <% end %>
+   
+    <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
    </div>
   
   <% end %>
