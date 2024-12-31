@@ -68,22 +68,28 @@
   <div class="tab-content">
     <div id="published" class="tab-pane fade show active">
       <% @published_posts.each do |post| %>
-        <li><%= post.title %></li>
+        <li>
+        <%= link_to post.title, post_path(post) %>
+        </li>
          <p><%= post.body %></p>
       <% end %>
     </div>
 
     <div id="draft" class="tab-pane fade">
       <% @draft_posts.each do |post| %>
-        <li><%= post.title %></li>
+        <li>
+        <%= link_to post.title, post_path(post) %>
+        </li>
         <p><%= post.body %></p>
       <% end %>
     </div>
 
     <div id="unpublished" class="tab-pane fade">
       <% @unpublished_posts.each do |post| %>
-        <li><%= post.title %></li>
-         <p><%= post.body %></p>
+        <li>
+        <%= link_to post.title, post_path(post) %>
+        </li>
+        <p><%= post.body %></p>
       <% end %>
     </div>
 
