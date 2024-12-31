@@ -1,3 +1,7 @@
+<div class="container">
+ <div class="row">
+  <div class ="col-lg-10 col-md-10 mx-2 mx-sm-auto">
+
 <h1>グループ詳細</h1>
 
 <table class="table" cellspacing="1">
@@ -10,7 +14,7 @@
       <%= @group.theme %>
   </td>
   
-  <td>
+  <td>メンバー:
     <% @group.users.each do |user| %>
     <li style="list-style: none;"><%= user.name %></li>
     <% end %>
@@ -30,3 +34,7 @@
   </tr>
   </tbody>
  </table>
+
+</div>
+</div>
+</div>
