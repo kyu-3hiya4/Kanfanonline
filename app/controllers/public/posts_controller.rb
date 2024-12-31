@@ -5,9 +5,9 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @posts = current_user.posts
-    @published_posts = @posts.where(status: 'published')
-    @draft_posts = @posts.where(status: 'draft')
-    @unpublished_posts = @posts.where(status: 'unpublished')
+    @published_posts = @posts.where(status: 1)
+    @draft_posts = @posts.where(status: 0)
+    @unpublished_posts = @posts.where(status: 3)
   end
 
   def create
