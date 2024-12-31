@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
     if params[:draft].present?
       @post.status = :draft
     else
-      @post.status = :publiched
+      @post.status = :published
     end
 
     if @post.save
@@ -42,10 +42,10 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @posts = Post.all
-    @published_posts = @posts.where(status: 'published')
-    @draft_posts = @posts.where(status: 'draft')
-    @unpublished_posts = @posts.where(status: 'unpublished')
+    @posts = current_user.posts
+    @published_posts = @posts.where(status: 1)
+    @draft_posts = @posts.where(status: 0)
+    @unpublished_posts = @posts.where(status: 2)
   end
 
   def update
