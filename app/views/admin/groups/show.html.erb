@@ -1,13 +1,26 @@
+<div class="container">
+ <div class="row">
+  <div class ="col-lg-10 col-md-10 mx-2 mx-sm-auto">
+
 <h2>グループ詳細</h2>
 
-<div>
-<h3><%= @group.name %></h3>
-<p><%= @group.theme %></p>
+<table class="table">
+<tbody>
+<tr>
 
-<h3>メンバー</h3>
+<td>グループ名:<h5><%= @group.name %></h5></td>
+<td>テーマ:<%= @group.theme %></p></td>
+
+<td>メンバー:
 <% @group.users.each do |user| %>
     <li style="list-style: none;"><%= user.name %></li>
     <% end %>
+<td>
 
-<p><%= link_to 'グループ削除', admin_group_path(@group), method: :delete, data: { confirm: '本当に削除しますか？' } %></p>
+<td><%= link_to 'グループ削除', admin_group_path(@group), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+
+</tbody>
+</table>
+</div>
+</div>
 </div>

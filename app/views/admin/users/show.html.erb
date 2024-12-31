@@ -1,7 +1,19 @@
+<div class="container">
+ <div class="row">
+  <div class ="col-lg-10 col-md-10 mx-2 mx-sm-auto">
+
 <h2>ユーザー詳細</h2>
 
-<div>
-<h3><%= @user.name %></h3>
-<p><%= @user.email %></p>
-<p><%= link_to '退会', admin_user_path(@user), method: :delete, data: { confirm: '本当に退会させますか？' } %></p>
+<table class="table">
+<tbody>
+<tr>
+
+<td>名前:<%= @user.name %></h3>
+<td>メールアドレス:<%= @user.email %></td>
+<td><%= link_to '退会', admin_user_path(@user), method: :delete, data: { confirm: '本当に退会させますか？' } %></td>
+
+</tbody>
+</table>
+</div>
+</div>
 </div>
