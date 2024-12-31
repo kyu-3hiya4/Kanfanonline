@@ -44,11 +44,12 @@
  <div>
   <p>コメント件数：<%= @post.comments.count %></p>
   <% @post.comments.each do |comment| %>
-    <%= comment.user.name %>
+    <li><%= comment.user.name %>
     <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.body %>
     <% if comment.user == current_user %>
       <%= link_to "削除", post_comment_path(comment.post, comment), class: "destroy-comment", method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger pull-right" %>
     <% end %>
+  </li>
   <% end %>
 </div>
 
