@@ -1,13 +1,14 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :authorize_post, only: [:show]
 
   def new
     @post = Post.new
     @posts = current_user.posts
     @published_posts = @posts.where(status: 1)
     @draft_posts = @posts.where(status: 0)
-    @unpublished_posts = @posts.where(status: 3)
+    @unpublished_posts = @posts.where(status: 2)
   end
 
   def create
@@ -32,7 +33,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.where(status: :published)
   end
 
   def show
@@ -93,6 +94,13 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
       redirect_to posts_path
+    end
+  end
+
+  def authorize_post
+    @post = Post.find(params[:id])
+    unless @post.published? || current_user == @post.user
+      redirect_to posts_path, alert: "この投稿にはアクセス権限がありません。"
     end
   end
 end
