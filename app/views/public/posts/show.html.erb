@@ -33,10 +33,11 @@
 
   <% if @post.user == current_user %>
     <tr>
+    <td>現状ステータス:<%= @post_detail.status %></td>
     <td><%= link_to "編集", edit_post_path(@post.id), class: "btn btn-lg btn-warning" %></td>
     <td><%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-lg btn-danger" %></td>
-  <% end %>
-  <tr>
+    <tr>
+ <% end %>
  </tbody>
  </table>
 
