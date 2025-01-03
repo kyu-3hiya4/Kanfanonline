@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validate :at_least_one_field_present, if: -> { draft? && (title.blank? || body.blank?) }
+  validate :at_least_one_field_present, if: -> { (draft? || unpublished?) && (title.blank? || body.blank?) }
 
   validates :title, presence: true, if: -> { status == "published" }
   validates :body, presence: true, if: -> { status == "published" }
@@ -36,5 +36,9 @@ class Post < ApplicationRecord
     status == "draft" # 下書き状態の場合はtrueを返す
   end
 
+  def unpublished?
+    status == "unpublished"
+  end
+  
 end
 
