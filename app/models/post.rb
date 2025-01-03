@@ -3,8 +3,10 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :title, presence: true
-  validates :body, presence: true
+  validate :at_least_one_field_present, if: -> { draft? && (title.blank? || body.blank?) }
+
+  validates :title, presence: true, if: -> { status == "published" }
+  validates :body, presence: true, if: -> { status == "published" }
 
   enum status: { draft:0, published: 1, unpublished: 2 }
 
@@ -22,6 +24,16 @@ class Post < ApplicationRecord
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
+  end
+
+  def at_least_one_field_present
+    if title.blank? && body.blank?
+      errors.add(:base, "タイトルか本文のどちらかは必須です")
+    end
+  end
+
+  def draft?
+    status == "draft" # 下書き状態の場合はtrueを返す
   end
 
 end
