@@ -30,19 +30,24 @@ class Public::GroupUsersController < ApplicationController
     end
    end
 
-  def index
+   def index
     @group_users = GroupUser.where(group_id: params[:group_id], status: 0)
   end
 
   def destroy
-    group_user = current_user.group_users.find_by(group_id: params[:group_id])
-    group_user.destroy
-    redirect_to group_path(params[:group_id]), notice: "グループメンバーから削除しました。"
+    group_user = GroupUser.find_by(group_id: params[:group_id], user_id: params[:id])
+    if group_user.status != 'approval' # 承認済みのユーザーは削除しない
+      group_user.update(status: GroupUser.statuses[:cancel])
+      group_user.destroy
+      redirect_to group_path(params[:group_id]), notice: "グループメンバーから削除しました。"
+    else
+      redirect_to group_path(params[:group_id]), alert: "承認済みのメンバーは削除できません。"
+    end
   end
 
   private
   
    def group_user_params
-    params.require(:group_user).permit(:satus)
+    params.require(:group_user).permit(:status)
    end
 end
