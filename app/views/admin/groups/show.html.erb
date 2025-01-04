@@ -12,8 +12,8 @@
 <td>テーマ:<%= @group.theme %></p></td>
 
 <td>メンバー:
-<% @group.users.each do |user| %>
-    <li style="list-style: none;"><%= user.name %></li>
+<% GroupUser.approval.where(group_id: @group.id).each do |group_user| %>
+    <li style="list-style: none;"><%= group_user.user.name %></li>
     <% end %>
 <td>
 
