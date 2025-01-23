@@ -41,16 +41,18 @@
 <!-- - 〜な時という記載方法で、2つ以上記載しましょう -->
 ​
 ## 設計書
-後ほど作成予定
+- [1]: https://drive.google.com/file/d/1FprOcoFxUrQaGfjteGOcutGA-AFNeqaS/view?usp=sharing
+- [2]: https://drive.google.com/file/d/1SeEw-yiH-5LVNbDIu9NQCZIP-oriqyMk/view?usp=sharing
+- [3]: https://drive.google.com/file/d/1rmxV1ZAdUqFduYo8A5rP7DCGspfQNR9r/view?usp=sharing
 <!-- - テーマ提出時点では不要です。 -->
 <!-- - 当項目には「後ほど作成予定」と記載しましょう。 -->
 ​
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux(Amazon Linux 2)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：VScode
 ​
 ## 使用素材
 <!-- - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。 -->
