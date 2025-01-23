@@ -41,9 +41,9 @@
 <!-- - 〜な時という記載方法で、2つ以上記載しましょう -->
 ​
 ## 設計書
-- [1]: https://drive.google.com/file/d/1FprOcoFxUrQaGfjteGOcutGA-AFNeqaS/view?usp=sharing
-- [2]: https://drive.google.com/file/d/1SeEw-yiH-5LVNbDIu9NQCZIP-oriqyMk/view?usp=sharing
-- [3]: https://drive.google.com/file/d/1rmxV1ZAdUqFduYo8A5rP7DCGspfQNR9r/view?usp=sharing
+- aws構成図(https://drive.google.com/file/d/1FprOcoFxUrQaGfjteGOcutGA-AFNeqaS/view?)usp=sharing
+- UIFlows(https://drive.google.com/file/d/1SeEw-yiH-5LVNbDIu9NQCZIP-oriqyMk/view?usp=sharing)
+- ER図(https://drive.google.com/file/d/1rmxV1ZAdUqFduYo8A5rP7DCGspfQNR9r/view?usp=sharing)
 <!-- - テーマ提出時点では不要です。 -->
 <!-- - 当項目には「後ほど作成予定」と記載しましょう。 -->
 ​
